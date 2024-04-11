@@ -2,6 +2,7 @@ package Entornos.GymRoutine.controller;
 
 
 import Entornos.GymRoutine.modelo.Membresia;
+import Entornos.GymRoutine.modelo.Usuario;
 import Entornos.GymRoutine.servicio.Impl.MembresiaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

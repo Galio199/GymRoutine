@@ -3,6 +3,7 @@ package Entornos.GymRoutine.servicio.Impl;
 import Entornos.GymRoutine.modelo.Membresia;
 import Entornos.GymRoutine.repositorio.MembresiaRepositorio;
 import Entornos.GymRoutine.servicio.Interfaces.IMembresiaServicio;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @Transactional
 public class MembresiaServicio implements IMembresiaServicio {
 
+    @Autowired
     MembresiaRepositorio membresiaRepositorio;
 
     @Override
@@ -21,6 +23,7 @@ public class MembresiaServicio implements IMembresiaServicio {
 
     @Override
     public Membresia nuevaMembresia(Membresia membresia) {
+        System.out.println(membresia);
         return membresiaRepositorio.save(membresia);
     }
 
