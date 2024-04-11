@@ -1,5 +1,6 @@
 package Entornos.GymRoutine.servicio.Impl;
 
+import Entornos.GymRoutine.DTO.MembresiaDTO;
 import Entornos.GymRoutine.modelo.Membresia;
 import Entornos.GymRoutine.repositorio.MembresiaRepositorio;
 import Entornos.GymRoutine.servicio.Interfaces.IMembresiaServicio;
@@ -20,8 +21,14 @@ public class MembresiaServicio implements IMembresiaServicio {
     }
 
     @Override
-    public Membresia nuevaMembresia(Membresia membresia) {
-        return membresiaRepositorio.save(membresia);
+    public MembresiaDTO nuevaMembresia(Membresia membresia) {
+        Membresia membresiaSave = membresiaRepositorio.save(membresia);
+        MembresiaDTO membresiaReturn = new MembresiaDTO();
+        membresiaReturn.setFechaFin(membresiaSave.getFechaFin());
+        membresiaReturn.setFechaInicio(membresiaSave.getFechaInicio());
+        membresiaReturn.setIdUsuario(membresiaSave.getId());
+        membresiaReturn.setUsername(membresiaSave.getUsuario().getUsername());
+        return membresiaReturn;
     }
 
     @Override
