@@ -17,8 +17,8 @@ public class MembresiaServicio implements IMembresiaServicio {
     MembresiaRepositorio membresiaRepositorio;
 
     @Override
-    public List<Membresia> listarMembresias() {
-        return membresiaRepositorio.findAll();
+    public List<Membresia> listarMembresiasByIdUsario(Long IdUsario) {
+        return (List<Membresia>) membresiaRepositorio.findByIdUsuario(IdUsario);
     }
 
     @Override

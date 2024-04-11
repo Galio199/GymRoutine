@@ -2,12 +2,13 @@ package Entornos.GymRoutine.controller;
 
 
 import Entornos.GymRoutine.modelo.Membresia;
-import Entornos.GymRoutine.modelo.Usuario;
 import Entornos.GymRoutine.servicio.Impl.MembresiaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin("*")
@@ -22,6 +23,11 @@ public class MembresiaController {
     public ResponseEntity<Membresia> agregar (@RequestBody  Membresia membresia){
         Membresia obj = membresiaServicio.nuevaMembresia(membresia);
         return new ResponseEntity<>(obj, HttpStatus.OK);
+    }
+
+    @GetMapping("/list/{idUser}")
+    public List<Membresia> listarMembresiasByIdUsario(@PathVariable Long idUser){
+        return membresiaServicio.listarMembresiasByIdUsario(idUser);
     }
 
 }
