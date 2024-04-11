@@ -32,10 +32,10 @@ public class Ejercicio {
 
     //Relaciones
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_dificultad_ejercicio")
+    @JoinColumn(name = "id_dificultad_ejercicio", insertable = false, updatable = false)
     private DificultadEjercicio dificultadEjercicio;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_tipo_ejercicio")
+    @JoinColumn(name = "id_tipo_ejercicio", insertable = false, updatable = false)
     private TipoEjercicio tipoEjercicio;
 
 }

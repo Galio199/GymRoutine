@@ -32,13 +32,13 @@ public class EjerciciosRutina {
 
     //Relaciones
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_ejercicio")
+    @JoinColumn(name = "id_ejercicio", insertable = false, updatable = false)
     private Ejercicio ejercicio;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_dia_semana")
+    @JoinColumn(name = "id_dia_semana", insertable = false, updatable = false)
     private DiaSemana diaSemana;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_rutina")
+    @JoinColumn(name = "id_rutina", insertable = false, updatable = false)
     private Rutina rutina;
 
 

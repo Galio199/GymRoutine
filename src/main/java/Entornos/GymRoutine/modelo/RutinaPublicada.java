@@ -27,7 +27,7 @@ public class RutinaPublicada {
     private Long idRutina;
 
     @ManyToOne
-    @JoinColumn(name = "id_rutina")
+    @JoinColumn(name = "id_rutina", insertable = false, updatable = false)
     private Rutina rutina;
 
 
