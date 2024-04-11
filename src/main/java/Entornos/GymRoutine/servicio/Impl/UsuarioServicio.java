@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Entornos.GymRoutine.servicio;
+package Entornos.GymRoutine.servicio.Impl;
 
 import Entornos.GymRoutine.modelo.Usuario;
 import Entornos.GymRoutine.repositorio.UsuarioRepositorio;
+import Entornos.GymRoutine.servicio.Interfaces.IUsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class UsuarioServicio implements IUsuarioServicio{
+public class UsuarioServicio implements IUsuarioServicio {
     
     @Autowired
     UsuarioRepositorio usuarioRepositorio;
@@ -36,7 +37,12 @@ public class UsuarioServicio implements IUsuarioServicio{
     }
 
     @Override
-    public boolean borrarUsuario(Long id) {
+    public Boolean validarUsuario(String username, String password){
+        return false;
+    }
+
+    @Override
+    public Boolean borrarUsuario(Long id) {
         usuarioRepositorio.deleteById(id);
         return true;
     }

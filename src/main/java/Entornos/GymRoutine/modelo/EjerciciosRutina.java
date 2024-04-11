@@ -1,18 +1,18 @@
 package Entornos.GymRoutine.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author juand
  */
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = EjerciciosRutina.TABLE_NAME)
 public class EjerciciosRutina {
 
@@ -21,64 +21,26 @@ public class EjerciciosRutina {
     //Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    @ManyToOne
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "id_ejercicio")
+    private Long idEjercicio;
+    @Column(name = "id_dia_semana")
+    private Long idDiaSemana;
+    @Column(name = "id_rutina")
+    private Long idRutina;
+
+    //Relaciones
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_ejercicio")
-    private Ejercicio idEjercicio;
-    @ManyToOne
+    private Ejercicio ejercicio;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_dia_semana")
-    private DiaSemana idDiaSemana;
-    @ManyToOne
+    private DiaSemana diaSemana;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_rutina")
-    private Rutina idRutina;
+    private Rutina rutina;
 
-    //Constructores
-    public EjerciciosRutina() {
-    }
 
-    public EjerciciosRutina(long id, Ejercicio idEjercicio, DiaSemana idDiaSemana, Rutina idRutina) {
-        this.id = id;
-        this.idEjercicio = idEjercicio;
-        this.idDiaSemana = idDiaSemana;
-        this.idRutina = idRutina;
-    }
-
-    //Getters
-    public static String getTABLE_NAME() {
-        return TABLE_NAME;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public Ejercicio getIdEjercicio() {
-        return idEjercicio;
-    }
-
-    public DiaSemana getIdDiaSemana() {
-        return idDiaSemana;
-    }
-
-    public Rutina getIdRutina() {
-        return idRutina;
-    }
-
-    //Setters
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setIdEjercicio(Ejercicio idEjercicio) {
-        this.idEjercicio = idEjercicio;
-    }
-
-    public void setIdDiaSemana(DiaSemana idDiaSemana) {
-        this.idDiaSemana = idDiaSemana;
-    }
-
-    public void setIdRutina(Rutina idRutina) {
-        this.idRutina = idRutina;
-    }
 
 }

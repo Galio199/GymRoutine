@@ -1,16 +1,18 @@
 package Entornos.GymRoutine.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author juand
  */
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = DificultadEjercicio.TABLE_NAME)
 public class DificultadEjercicio {
 
@@ -19,38 +21,9 @@ public class DificultadEjercicio {
     //Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "nombre")
     private String nombre;
-
-    //Constructores
-    public DificultadEjercicio() {
-    }
-
-    public DificultadEjercicio(long id, String nombre) {
-        this.id = id;
-        this.nombre = nombre;
-    }
-
-    //Getters
-    public static String getTABLE_NAME() {
-        return TABLE_NAME;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    //Setters
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
 }

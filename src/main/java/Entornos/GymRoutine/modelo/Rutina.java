@@ -1,18 +1,18 @@
 package Entornos.GymRoutine.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author juand
  */
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = Rutina.TABLE_NAME)
 public class Rutina {
 
@@ -21,50 +21,16 @@ public class Rutina {
     //Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "nombre")
     private String nombre;
-    @ManyToOne
+    @Column(name = "id_usuario")
+    private Long idUsuario;
+
+    //Relaciones
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario")
-    private Usuario idUsuario;
-
-    //Constructores
-    public Rutina() {
-    }
-
-    public Rutina(long id, String nombre, Usuario idUsuario) {
-        this.id = id;
-        this.nombre = nombre;
-        this.idUsuario = idUsuario;
-    }
-
-    //Getters
-    public static String getTABLE_NAME() {
-        return TABLE_NAME;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public Usuario getIdUsuario() {
-        return idUsuario;
-    }
-
-    //Setters
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setIdUsuario(Usuario idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+    private Usuario usuario;
 
 }

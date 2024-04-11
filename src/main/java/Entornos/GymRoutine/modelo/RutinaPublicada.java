@@ -1,18 +1,18 @@
 package Entornos.GymRoutine.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author juand
  */
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = RutinaPublicada.TABLE_NAME)
 public class RutinaPublicada {
 
@@ -21,40 +21,15 @@ public class RutinaPublicada {
     //Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "id_rutina")
+    private Long idRutina;
+
     @ManyToOne
     @JoinColumn(name = "id_rutina")
-    private Rutina idRutina;
+    private Rutina rutina;
 
-    //Constructores
-    public RutinaPublicada() {
-    }
 
-    public RutinaPublicada(long id, Rutina idRutina) {
-        this.id = id;
-        this.idRutina = idRutina;
-    }
-
-    //Getters
-    public static String getTABLE_NAME() {
-        return TABLE_NAME;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public Rutina getIdRutina() {
-        return idRutina;
-    }
-
-    //Setters
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setIdRutina(Rutina idRutina) {
-        this.idRutina = idRutina;
-    }
 
 }

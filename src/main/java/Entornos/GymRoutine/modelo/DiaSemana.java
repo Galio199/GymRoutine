@@ -1,16 +1,18 @@
 package Entornos.GymRoutine.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author juand
  */
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = DiaSemana.TABLE_NAME)
 public class DiaSemana {
 
@@ -19,48 +21,12 @@ public class DiaSemana {
     //Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private int orden;
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "orden")
+    private Integer orden;
+    @Column(name = "nombre")
     private String nombre;
 
-    //Constructores
-    public DiaSemana() {
-    }
-
-    public DiaSemana(long id, int orden, String nombre) {
-        this.id = id;
-        this.orden = orden;
-        this.nombre = nombre;
-    }
-
-    //Getters
-    public static String getTABLE_NAME() {
-        return TABLE_NAME;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public int getOrden() {
-        return orden;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    //Setters
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setOrden(int orden) {
-        this.orden = orden;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
 }
