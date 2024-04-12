@@ -4,6 +4,7 @@
  */
 package Entornos.GymRoutine.servicio.Interfaces;
 
+import Entornos.GymRoutine.DTO.UsuarioCreateDTO;
 import Entornos.GymRoutine.modelo.Usuario;
 
 /**
@@ -12,7 +13,7 @@ import Entornos.GymRoutine.modelo.Usuario;
  */
 public interface IUsuarioServicio {
 
-    Usuario guardarUsuario(Usuario usuario);
+    Usuario guardarUsuario(UsuarioCreateDTO usuario);
 
     Boolean borrarUsuario(Long id);
     

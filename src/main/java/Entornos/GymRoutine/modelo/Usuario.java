@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  *
@@ -37,6 +38,6 @@ public class Usuario {
     @Column(name = "apellido")
     private String apellido;
     @Column(name = "fecha_creacion")
-    private Timestamp fechaCreacion;
+    private Date fechaCreacion;
 
 }
