@@ -20,12 +20,7 @@ public class EjercicioServicio implements IEjercicioServicio{
     EjercicioRepositorio ejercicioRepositorio;
 
     @Override
-    public List<Ejercicio> listarEjercicios() {
-        return ejercicioRepositorio.findAllOrdenadoPorDificultad();
-    }
-
-    @Override
-    public List<Ejercicio> filtrarEjercicios(Long idTipoEjercicio, Long idDificultadEjercicio) {
+    public List<Ejercicio> listarEjercicios(Long idTipoEjercicio, Long idDificultadEjercicio) {
         return ejercicioRepositorio.findByTipoYDificultad(idTipoEjercicio, idDificultadEjercicio);
     }
     
