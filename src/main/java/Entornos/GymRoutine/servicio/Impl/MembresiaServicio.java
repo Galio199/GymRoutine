@@ -4,6 +4,7 @@ import Entornos.GymRoutine.DTO.MembresiaDTO;
 import Entornos.GymRoutine.modelo.Membresia;
 import Entornos.GymRoutine.repositorio.MembresiaRepositorio;
 import Entornos.GymRoutine.servicio.Interfaces.IMembresiaServicio;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,22 +14,28 @@ import java.util.List;
 @Transactional
 public class MembresiaServicio implements IMembresiaServicio {
 
+    @Autowired
     MembresiaRepositorio membresiaRepositorio;
 
     @Override
-    public List<Membresia> listarMembresias() {
-        return membresiaRepositorio.findAll();
+    public List<Membresia> listarMembresiasByIdUsario(Long IdUsario) {
+        return (List<Membresia>) membresiaRepositorio.findByIdUsuario(IdUsario);
     }
 
     @Override
-    public MembresiaDTO nuevaMembresia(Membresia membresia) {
-        Membresia membresiaSave = membresiaRepositorio.save(membresia);
-        MembresiaDTO membresiaReturn = new MembresiaDTO();
-        membresiaReturn.setFechaFin(membresiaSave.getFechaFin());
-        membresiaReturn.setFechaInicio(membresiaSave.getFechaInicio());
-        membresiaReturn.setIdUsuario(membresiaSave.getId());
-        membresiaReturn.setUsername(membresiaSave.getUsuario().getUsername());
-        return membresiaReturn;
+    public Membresia nuevaMembresia(Membresia membresia) {
+        System.out.println(membresia);
+        return membresiaRepositorio.save(membresia);
+    }
+
+    @Override
+    public Membresia buscarMembresia(Long id) {
+        Membresia membresia = null;
+        membresia = membresiaRepositorio.findById(id).orElse(null);
+        if(membresia == null){
+            return null;
+        }
+        return membresia;
     }
 
     @Override

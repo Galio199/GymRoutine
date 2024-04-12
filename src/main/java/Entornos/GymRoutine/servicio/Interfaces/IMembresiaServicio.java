@@ -7,9 +7,11 @@ import java.util.List;
 
 public interface IMembresiaServicio {
 
-    List<Membresia> listarMembresias();
+    List<Membresia> listarMembresiasByIdUsario(Long idUsario);
 
     MembresiaDTO nuevaMembresia(Membresia membresia);
+
+    Membresia buscarMembresia(Long id);
 
     int borrarMembresia(Long id);
 
