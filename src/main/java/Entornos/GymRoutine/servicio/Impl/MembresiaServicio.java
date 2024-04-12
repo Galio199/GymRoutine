@@ -1,6 +1,5 @@
 package Entornos.GymRoutine.servicio.Impl;
 
-import Entornos.GymRoutine.DTO.MembresiaDTO;
 import Entornos.GymRoutine.modelo.Membresia;
 import Entornos.GymRoutine.repositorio.MembresiaRepositorio;
 import Entornos.GymRoutine.servicio.Interfaces.IMembresiaServicio;

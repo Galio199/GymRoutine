@@ -1,7 +1,6 @@
 package Entornos.GymRoutine.controller;
 
 
-import Entornos.GymRoutine.DTO.MembresiaDTO;
 import Entornos.GymRoutine.modelo.Membresia;
 import Entornos.GymRoutine.servicio.Impl.MembresiaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +20,8 @@ public class MembresiaController {
     MembresiaServicio membresiaServicio;
 
     @PostMapping("/")
-    public ResponseEntity<MembresiaDTO> agregar (@RequestBody  Membresia membresia){
-        MembresiaDTO obj = membresiaServicio.nuevaMembresia(membresia);
+    public ResponseEntity<Membresia> agregar (@RequestBody  Membresia membresia){
+        Membresia obj = membresiaServicio.nuevaMembresia(membresia);
         return new ResponseEntity<>(obj, HttpStatus.OK);
     }
 
