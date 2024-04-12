@@ -10,6 +10,8 @@ public interface IMembresiaServicio {
 
     Membresia nuevaMembresia(Membresia membresia);
 
+    Membresia buscarMembresia(Long id);
+
     int borrarMembresia(Long id);
 
 }

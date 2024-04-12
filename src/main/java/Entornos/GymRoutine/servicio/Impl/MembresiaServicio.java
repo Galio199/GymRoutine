@@ -28,6 +28,16 @@ public class MembresiaServicio implements IMembresiaServicio {
     }
 
     @Override
+    public Membresia buscarMembresia(Long id) {
+        Membresia membresia = null;
+        membresia = membresiaRepositorio.findById(id).orElse(null);
+        if(membresia == null){
+            return null;
+        }
+        return membresia;
+    }
+
+    @Override
     public int borrarMembresia(Long id) {
         membresiaRepositorio.deleteById(id);
         return 1;

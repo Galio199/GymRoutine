@@ -30,4 +30,14 @@ public class MembresiaController {
         return membresiaServicio.listarMembresiasByIdUsario(idUser);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Membresia> eliminar(@PathVariable Long id){
+        Membresia obj = membresiaServicio.buscarMembresia(id);
+        if(obj != null){
+            membresiaServicio.borrarMembresia(id);
+        }else {
+            return new ResponseEntity<>(obj, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<>(obj, HttpStatus.OK);
+    }
 }
